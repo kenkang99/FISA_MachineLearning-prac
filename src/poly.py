@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+import joblib
 
 selected_features = ['X_43', 'X_25', 'X_42', 'X_46', 'X_18', 'X_26', 
                      'X_02', 'X_05', 'X_28', 'X_22', 'X_47', 'X_37', 
@@ -19,11 +21,15 @@ test = pd.read_csv('data/test.csv')
 test_x = test[selected_features]
 
 
-degree = 23
+degree = 3
 poly = PolynomialFeatures(degree=degree, include_bias=False)
 
-train_x_poly = poly.fit_transform(train_x)
-test_x_poly = poly.transform(test_x)
+scaler = StandardScaler()
+train_x_scaled = scaler.fit_transform(train_x)
+test_x_scaled = scaler.transform(test_x)
+
+train_x_poly = poly.fit_transform(train_x_scaled)
+test_x_poly = poly.transform(test_x_scaled)
 
 model = LinearRegression()
 model.fit(train_x_poly, train_y) 
@@ -36,3 +42,7 @@ submission = pd.read_csv('data/sample_submission.csv')
 submission['target'] = preds_int
 
 submission.to_csv('data/poly_submit.csv', index=False, encoding='utf-8-sig')
+
+# 모델 + 스케일러 둘 다 저장해야 함
+joblib.dump(model, "poly_model.pkl")
+joblib.dump(scaler, "scaler.pkl")

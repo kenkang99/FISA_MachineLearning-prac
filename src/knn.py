@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
-#크로스 엔트로피
+import joblib
+
 selected_features = ['X_43', 'X_25', 'X_42', 'X_46', 'X_18', 'X_26', 
                      'X_02', 'X_05', 'X_28', 'X_22', 'X_47', 'X_37', 
                      'X_51', 'X_11', 'X_33', 'X_30', 'X_01', 'X_38', 
@@ -33,3 +34,7 @@ submission = pd.read_csv('data/sample_submission.csv')
 submission['target'] = preds
 
 submission.to_csv('data/knn_submit.csv', index=False, encoding='utf-8-sig')
+
+# 모델 + 스케일러 둘 다 저장해야 함
+joblib.dump(model, "knn_model.pkl")
+joblib.dump(scaler, "scaler.pkl")
