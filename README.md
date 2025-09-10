@@ -2,7 +2,7 @@
 
 ## 프로젝트 개요
 
-이 프로젝트는 Freebies' MLDL Mini Project의 [Dacon 대회](https://dacon.io/competitions/official/236590/overview/description)를 대상으로 하며, **다중 분류** 문제를 다룹니다. 목표는 익명화된 블랙박스 특성(`X_01`, `X_02`, …)으로부터 정상/비정상 유형(0–20)을 예측하는 모델을 설계하는 것입니다.
+이 프로젝트는 Freebies' MLDL Mini Project로 [Dacon 대회](https://dacon.io/competitions/official/236590/overview/description)를 대상으로 하며, **다중 분류** 문제를 다룹니다. 목표는 익명화된 블랙박스 특성(`X_01`, `X_02`, …)으로부터 정상/비정상 유형(0–20)을 예측하는 모델을 설계하는 것입니다.
 
 - **문제 유형**: 다중 분류(21 클래스, 0–20)  
 - **평가 지표**: Macro-F1 Score  
