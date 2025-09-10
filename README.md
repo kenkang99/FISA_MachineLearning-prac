@@ -65,7 +65,7 @@ cd FISA_MachineLearning-prac
 2) **가상환경 생성(권장)**
 ```bash
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scriptsctivate
+source venv/bin/activate  # Windows: venv\Scripts\Activate
 ```
 
 3) **필요 패키지 설치**
